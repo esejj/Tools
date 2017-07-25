@@ -6,7 +6,7 @@
 
 ---
 
-###### Tools v. 0.1
-############ banApi - banowanie (ban , kick , tempban , unban , pardon)
+#### Tools v. 0.1
+##### banApi - banowanie (ban , kick , tempban , unban , pardon)
 
 ---
