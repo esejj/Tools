@@ -1,0 +1,9 @@
+// Wiadomosci dla sekcji Home
+
+// Lokalizacja Home ustawiona
+
+home-set: '&8» &6Ustawiono lokalizacje &7HOME'
+
+home-delete: '&8» &6Lokalizacja &7HOME &6zostala &cusunieta'
+
+home-teleported: '&8» &6Przeteleportowano na lokalizacje &7HOME'
