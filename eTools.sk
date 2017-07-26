@@ -1,0 +1,35 @@
+# LICENCJA GNU NA SKRYPT https://www.gnu.org/licenses/gpl-3.0.txt
+# PRAWNYM TWORCA SKRYPTU JEST ESEJ
+# ZASTRZEGAM SOBIE PRAWO DO USUWANIA INFORMACJI O AUTORZE.
+command /eTools:repair [<text>]:
+	description: Naprawianie przedmiotow.
+	aliases: /repair
+	trigger:
+        	if argument isn't set:
+				if player has permission "eTools.repair":
+					if {eTools::repair::time::%player%} > 0:
+						send "%{can-not-still-fix}%" to the player
+						stop
+					else:
+						set {eTools::repair::time::%player%} to {@time-repair}
+						send "%{fixed}%" to the player
+						stop
+				else:
+					send "&8» &cBrak uprawnien!"
+			if argument is "all":
+            			if player has permission "eTools.repair.all":
+					if {eTools::repair::time::%player%} > 0:
+						send "%{can-not-still-fix}%" to the player
+						stop
+					else:
+						set {eTools::repair::time::%player%} to {time-repair}
+						send "%{fixed}%" to the player
+						stop
+				else:
+					send "%{permission-message}%"
+every minute:
+	loop all players:
+		{eTools::repair::time::%loop-player%} > 0:
+			subtract 1 from {eTools::repair::time::%loop-player%}
+			{eTools::repair::time::%loop-player%} = 0:
+				send "%{renovated}%" to the loop-player
