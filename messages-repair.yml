@@ -1,0 +1,15 @@
+// Plik z wiadomosciami do sekcji naprawy przedmiotow
+
+// informacja , ze nie mozna jeszcze naprawic.
+// Dostepne zmienne: {RT-PLAYER} (czas za ile mozna naprawic)
+
+can-not-still-fix: '&8» &cNie mozesz jeszcze naprawic! &8( &3{RT-PLAYER} &8)'
+
+// informacja o naprawieniu przedmiotu/ow
+// Dostepne zmienne: {RT-PLAYER} (czas za ile mozna naprawic)
+
+fixed: '&8» &6Naprawiles swoj przedmiot! &7Nastepna naprawa za &c{RT-PLAYER} &6minut'
+
+// informacja o mozliwosci ponownej naprawy
+
+renovated: '&8» &6Znow mozesz naprawic swoj przedmiot!'
