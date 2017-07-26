@@ -1,35 +1,54 @@
 # LICENCJA GNU NA SKRYPT https://www.gnu.org/licenses/gpl-3.0.txt
 # PRAWNYM TWORCA SKRYPTU JEST ESEJ
 # ZASTRZEGAM SOBIE PRAWO DO USUWANIA INFORMACJI O AUTORZE.
+on load:
+	if file "plugins/skript/scripts/eTools-cfr.sk" doesn't exists:
+		download from "https://raw.githubusercontent.com/esejj/Tools/master/eTools-cfr.sk" to "plugins/skript/scripts/eTools-cfr.sk"
+	make console command "skript reload eTools-cfr.sk"
 command /eTools:repair [<text>]:
 	description: Naprawianie przedmiotow.
 	aliases: /repair
 	trigger:
         	if argument isn't set:
-				if player has permission "eTools.repair":
-					if {eTools::repair::time::%player%} > 0:
-						send "%{can-not-still-fix}%" to the player
-						stop
-					else:
-						set {eTools::repair::time::%player%} to {@time-repair}
-						send "%{fixed}%" to the player
-						stop
+			if player has permission "eTools.repair":
+				if {eTools::repair::time::%player%} > 0:
+					send "%{can-not-still-fix}%" to the player
+					stop
 				else:
-					send "&8» &cBrak uprawnien!"
-			if argument is "all":
-            			if player has permission "eTools.repair.all":
-					if {eTools::repair::time::%player%} > 0:
-						send "%{can-not-still-fix}%" to the player
-						stop
-					else:
-						set {eTools::repair::time::%player%} to {time-repair}
-						send "%{fixed}%" to the player
-						stop
+					set {eTools::repair::time::%player%} to {@time-repair}
+					send "%{fixed}%" to the player
+					stop
+			else:
+				send "%{permission-message}%"
+		if argument is "all":
+            		if player has permission "eTools.repair.all":
+				if {eTools::repair::time::%player%} > 0:
+					send "%{can-not-still-fix}%" to the player
+					stop
 				else:
-					send "%{permission-message}%"
+					set {eTools::repair::time::%player%} to {time-repair}
+					send "%{fixed}%" to the player
+					stop
+			else:
+				send "%{permission-message}%"
 every minute:
 	loop all players:
 		{eTools::repair::time::%loop-player%} > 0:
 			subtract 1 from {eTools::repair::time::%loop-player%}
 			{eTools::repair::time::%loop-player%} = 0:
 				send "%{renovated}%" to the loop-player
+command /eTools:home [<text>]:
+	description: Home.
+	aliases: /home
+	trigger:
+		if argument is "set":
+			set {eTools::home::%player%} to location of the player
+			send "%{home-set}%"
+			stop
+		if argument is "del":
+			clear {eTools::home::%player%}
+			send "%{home-delete}%"
+			stop
+		if argument isn't set:
+			teleport player to {eTools::home::%player%}
+			send "%{home-teleported}%"
