@@ -1,3 +1,9 @@
-# Updater do eTools
-
-# ... projekt zostanie rozpoczety 27 - 28 lipca 2017.
+# Updater do eTools w wersji beta...
+# TODO : Informacja co dodano , sprawdzanie czy jest aktualizacja...
+# etc... //
+command /eTools-update:
+	permission: eTools.update
+	trigger:
+		download from "https://raw.githubusercontent.com/esejj/Tools/master/eTools.sk" to "plugins/skript/scripts/eTools.sk"
+		send "zaktualizowano eTools..." to the player
+		stop
