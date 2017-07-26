@@ -15,7 +15,7 @@ command /eTools:repair [<text>]:
 					send "%{can-not-still-fix}%" to the player
 					stop
 				else:
-					set {eTools::repair::time::%player%} to {@time-repair}
+					set {eTools::repair::time::%player%} to {time-repair}
 					send "%{fixed}%" to the player
 					stop
 			else:
@@ -26,7 +26,7 @@ command /eTools:repair [<text>]:
 					send "%{can-not-still-fix}%" to the player
 					stop
 				else:
-					set {eTools::repair::time::%player%} to {time-repair}
+					set {eTools::repair::time::%player%} to {time-repair-all}
 					send "%{fixed}%" to the player
 					stop
 			else:
