@@ -1,0 +1,29 @@
+on load:
+	if folder "plugins/eTools" doesn't exists:
+		create folder "plugins/eTools"
+		create folder "plugins/eTools/repair"
+		create folder "plugins/eTools/home"
+		create file "plugins/eTools/messages.yml"
+		create file "plugins/eTools/config.yml"
+		wf "// tu w przyszlosci cos bedzie" to "plugins/eTools/config.yml"
+		create file "plugins/eTools/repair/config.yml"
+		create file "plugins/eTools/repair/messages.yml"
+		create file "plugins/eTools/home/config.yml"
+		create file "plugins/eTools/home/messages.yml"
+		download from "https://raw.githubusercontent.com/esejj/Tools/master/config-repair.yml" to "plugins/eTools/repair/config.yml"
+		download from "https://raw.githubusercontent.com/esejj/Tools/master/messages-repair.yml" to "plugins/eTools/repair/messages.yml"
+		download from "https://raw.githubusercontent.com/esejj/Tools/master/config-home.sk" to "plugins/eTools/home/config.yml"
+		download from "https://raw.githubusercontent.com/esejj/Tools/master/messages-home.yml" to "plugins/eTools/home/messages.yml"
+		download from "https://raw.githubusercontent.com/esejj/Tools/master/messages.yml" to "plugins/eTools/messages.yml"
+	set {time-repair} to single value "time-repair" get of "plugins/eTools/repair/config.yml"
+	set {time-repair-all} to single value "time-repair-all" get of "plugins/eTools/repair/config.yml"
+	set {can-not-still-fix} to colored single value "can-not-still-fix" get of "plugins/eTools/repair/messages.yml"
+	replace all "{RT-PLAYER}" with "%{eTools::time::repair::%player%}%" in {can-not-still-fix}
+	set {fixed} to colored single value "fixed" get of "plugins/eTools/repair/messages.yml"
+	replace all "{RT-PLAYER}" with "%{eTools::time::repair::%player%}%" in {fixed}
+	set {renovated} to colored single value "renovated" get of "plugins/eTools/repair/messages.yml"
+	set {permission-message} to colored single value "permission-message" get of "plugins/eTools/messages.yml"
+	set {home-set} to colored single value "home-set" get of "plugins/eTools/home/messages.yml"
+	set {home-delete} to colored single value "home-delete" get of "plugins/eTools/home/messages.yml"
+	set {home-teleported} to colored single value "home-teleported" get of "plugins/eTools/home/messages.yml"
+	
