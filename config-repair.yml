@@ -1,0 +1,9 @@
+// Plik konfiguracyjny do sekcji naprawy przedmiotow.
+
+// Czas naprawy (pojedynczej)
+
+time-repair: '10' // w minutach
+
+// Czas naprawy (wszystkich przedmiotow)
+
+time-repair-all: '10' // w minutach
